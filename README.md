@@ -1,4 +1,4 @@
-[![](https://jitpack.io/v/ceryle/FitGridView.svg)](https://jitpack.io/#ceryle/FitGridView)
+[![](https://jitpack.io/v/ceryle/fitgridview.svg)](https://jitpack.io/#ceryle/fitgridview)
 
 # FitGridView
 
@@ -24,7 +24,7 @@ and:
 
 ```gradle
 dependencies {
-    compile 'com.github.ceryle:FitGridView:v1.0'
+    compile 'com.github.ceryle:fitgridview:v1.0'
 }
 ```
 
