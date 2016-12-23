@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/ceryle/FitGridView.svg)](https://jitpack.io/#ceryle/FitGridView)
+
 # FitGridView,
 
 ![poster](https://cloud.githubusercontent.com/assets/20969019/21449819/b230b9a4-c8f9-11e6-8620-7a2297f96d71.png)
