@@ -10,9 +10,7 @@ import android.widget.BaseAdapter;
 public abstract class FitGridAdapter extends BaseAdapter {
 
     private Context context;
-    private int columnWidth, columnHeight;
-    private int gridSize;
-    private int itemId;
+    private int columnWidth, columnHeight, row, column, itemId, size = 0;
 
     public FitGridAdapter(Context context) {
         this.context = context;
@@ -23,9 +21,20 @@ public abstract class FitGridAdapter extends BaseAdapter {
         this.itemId = itemId;
     }
 
-    public FitGridAdapter(Context context, int itemId, int gridSize) {
+    public FitGridAdapter(Context context, int itemId, int size) {
         this.context = context;
         this.itemId = itemId;
+
+        this.size = size;
+    }
+
+    public FitGridAdapter(Context context, int itemId, int row, int column) {
+        this.context = context;
+        this.itemId = itemId;
+        this.row = row;
+        this.column = column;
+
+        size = row * column;
     }
 
     @Override
@@ -46,7 +55,7 @@ public abstract class FitGridAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return gridSize;
+        return size == 0 ? column * row : size;
     }
 
     @Override
@@ -67,7 +76,11 @@ public abstract class FitGridAdapter extends BaseAdapter {
         this.columnWidth = columnWidth;
     }
 
-    void setGridSize(int gridSize) {
-        this.gridSize = gridSize;
+    void setColumn(int column) {
+        this.column = column;
+    }
+
+    void setRow(int row) {
+        this.row = row;
     }
 }

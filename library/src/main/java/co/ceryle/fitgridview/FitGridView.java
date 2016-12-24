@@ -65,7 +65,8 @@ public class FitGridView extends GridView {
 
         remeasure();
 
-        fitGridAdapter.setGridSize(column * row);
+        fitGridAdapter.setRow(row);
+        fitGridAdapter.setColumn(column);
         fitGridAdapter.setColumnHeight(itemHeight);
         fitGridAdapter.setColumnWidth(itemWidth);
         setAdapter(fitGridAdapter);
