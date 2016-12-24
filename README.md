@@ -1,8 +1,9 @@
-[![](https://jitpack.io/v/ceryle/fitgridview.svg)](https://jitpack.io/#ceryle/fitgridview)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-FitGridView-green.svg?style=true)](https://android-arsenal.com/details/1/4927) [![](https://jitpack.io/v/ceryle/fitgridview.svg)](https://jitpack.io/#ceryle/fitgridview)
 
 # FitGridView
 
 ![poster](https://cloud.githubusercontent.com/assets/20969019/21449819/b230b9a4-c8f9-11e6-8620-7a2297f96d71.png)
+In this library, GridView is extended with a few methods to achieve fitting it to a given size.
 
 ##Preview
 ![preview](https://cloud.githubusercontent.com/assets/20969019/21449604/9b90ceac-c8f7-11e6-9c32-3c94b24f8e15.gif)
