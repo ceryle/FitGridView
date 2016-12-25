@@ -55,6 +55,7 @@ dependencies {
 ```
 
 ##### In Java
+###### in your main activity:
 ```java
 @Override
 protected void onCreate(Bundle savedInstanceState) {
@@ -73,8 +74,10 @@ private void changeSize(int r, int c) {
      gridView.setColumn(c);
      gridView.update();
 }
+```
 
-
+###### in your adapter:
+```java
 // In adapter, you can define your grid size by passing it to super method.
 int dataSize = 15;
 Adapter(Context context) {
