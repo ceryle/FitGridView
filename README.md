@@ -73,6 +73,14 @@ private void changeSize(int r, int c) {
      gridView.setColumn(c);
      gridView.update();
 }
+
+
+// In adapter, you can define your grid size by passing it to super method.
+int dataSize = 15;
+Adapter(Context context) {
+        super(context, R.layout.grid_item, dataSize);
+        this.context = context;
+}
 ```
 
 ## License
