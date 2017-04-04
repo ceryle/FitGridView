@@ -87,11 +87,14 @@ public class FitGridView extends GridView {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
         remeasure();
     }
 
-
     private void remeasure() {
+        if (column == 0 || row == 0)
+            return;
+
         itemWidth = getMeasuredWidth() / column;
         itemHeight = getMeasuredHeight() / row;
     }
