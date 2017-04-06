@@ -92,11 +92,8 @@ public class FitGridView extends GridView {
     }
 
     private void remeasure() {
-        if (column == 0 || row == 0)
-            return;
-
-        itemWidth = getMeasuredWidth() / column;
-        itemHeight = getMeasuredHeight() / row;
+        itemWidth = getMeasuredWidth() / (column == 0 ? 1 : column);
+        itemHeight = getMeasuredHeight() / (row == 0 ? 1 : row);
     }
 
     /**
