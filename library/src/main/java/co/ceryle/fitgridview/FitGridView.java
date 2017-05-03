@@ -97,6 +97,20 @@ public class FitGridView extends GridView {
     }
 
     /**
+     * @return Number of columns associated with the view
+     */
+    public int getColumnCount() {
+        return column;
+    }
+
+    /**
+     * @return Number of rows associated with the view
+     */
+    public int getRowCount() {
+        return row;
+    }
+
+    /**
      * @param column sets the desired number of columns in the grid
      */
     public void setColumn(int column) {
