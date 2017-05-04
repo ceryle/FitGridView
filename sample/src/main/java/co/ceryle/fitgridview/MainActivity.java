@@ -1,10 +1,14 @@
 package co.ceryle.fitgridview;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.GridView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +21,26 @@ public class MainActivity extends AppCompatActivity {
 
         gridView = (FitGridView) findViewById(R.id.gridView);
         gridView.setFitGridAdapter(new Adapter(this));
+    }
+
+    public void onClick(View v) {
+        showAlert();
+    }
+
+    private void showAlert() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+
+        FitGridView gridView = new FitGridView(this);
+        gridView.setNumColumns(3);
+        gridView.setNumRows(4);
+        gridView.setFitGridAdapter(new Adapter(this));
+        builder.setView(gridView);
+
+        builder.show();
     }
 
     @Override
@@ -53,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void changeSize(int r, int c) {
-        gridView.setRow(r);
-        gridView.setColumn(c);
+        gridView.setNumRows(r);
+        gridView.setNumColumns(c);
         gridView.update();
     }
 }

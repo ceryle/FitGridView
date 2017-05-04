@@ -76,11 +76,11 @@ public abstract class FitGridAdapter extends BaseAdapter {
         this.columnWidth = columnWidth;
     }
 
-    void setColumn(int column) {
+    void setNumColumns(int column) {
         this.column = column;
     }
 
-    void setRow(int row) {
+    void setNumRows(int row) {
         this.row = row;
     }
 }

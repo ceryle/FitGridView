@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.GridView;
 
 public class FitGridView extends GridView {
@@ -53,23 +54,38 @@ public class FitGridView extends GridView {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        update();
+        updateAndMeasure();
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+        int width = MeasureSpec.getSize(widthMeasureSpec);
+        int height = MeasureSpec.getSize(heightMeasureSpec);
+
+        remeasure(width, height);
+
+        setMeasuredDimension(width, height);
     }
 
     /**
      * use it to update view if you have changed width/height, grid size or adapter.
      */
-    public void update() {
+    private void updateAndMeasure() {
         if (null == fitGridAdapter)
             return;
 
-        remeasure();
-
-        fitGridAdapter.setRow(row);
-        fitGridAdapter.setColumn(column);
+        fitGridAdapter.setNumRows(row);
+        fitGridAdapter.setNumColumns(column);
         fitGridAdapter.setColumnHeight(itemHeight);
         fitGridAdapter.setColumnWidth(itemWidth);
         setAdapter(fitGridAdapter);
+    }
+
+      public void update() {
+        remeasure(getMeasuredWidth(), getMeasuredHeight());
+        updateAndMeasure();
     }
 
     /**
@@ -79,49 +95,43 @@ public class FitGridView extends GridView {
     public void setDimension(float displayWidth, float displayHeight) {
         itemWidth = (int) displayWidth / column;
         itemHeight = (int) displayHeight / row;
-        update();
+        updateAndMeasure();
     }
 
     private int itemWidth = 0, itemHeight = 0;
 
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-
-        remeasure();
-    }
-
-    private void remeasure() {
-        itemWidth = getMeasuredWidth() / (column == 0 ? 1 : column);
-        itemHeight = getMeasuredHeight() / (row == 0 ? 1 : row);
+    private void remeasure(int width, int height) {
+        itemWidth = width / (column == 0 ? 1 : column);
+        itemHeight = height / (row == 0 ? 1 : row);
     }
 
     /**
      * @return Number of columns associated with the view
      */
-    public int getColumnCount() {
+    @Override
+    public int getNumColumns() {
         return column;
     }
 
     /**
      * @return Number of rows associated with the view
      */
-    public int getRowCount() {
+    public int getNumRows() {
         return row;
     }
 
     /**
      * @param column sets the desired number of columns in the grid
      */
-    public void setColumn(int column) {
+    public void setNumColumns(int column) {
         this.column = column;
-        setNumColumns(column);
+        super.setNumColumns(column);
     }
 
     /**
      * @param row sets the desired number of row in the grid
      */
-    public void setRow(int row) {
+    public void setNumRows(int row) {
         this.row = row;
     }
 
@@ -132,6 +142,5 @@ public class FitGridView extends GridView {
      */
     public void setFitGridAdapter(FitGridAdapter fitGridAdapter) {
         this.fitGridAdapter = fitGridAdapter;
-        update();
     }
 }

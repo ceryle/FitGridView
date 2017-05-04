@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     android:id="@+id/activity_main"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:onClick="onClick"
+        android:text="Show In AlertDialog"
+        android:textAllCaps="false"/>
 
     <co.ceryle.fitgridview.FitGridView
         android:id="@+id/gridView"
@@ -13,4 +22,4 @@
         android:listSelector="@android:color/transparent"
         app:column="3"
         app:row="4"/>
-</RelativeLayout>
+</LinearLayout>
