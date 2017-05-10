@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.GridView;
 
 public class FitGridView extends GridView {
@@ -54,7 +53,8 @@ public class FitGridView extends GridView {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        updateAndMeasure();
+        remeasure(w, h);
+        updateAdapter();
     }
 
     @Override
@@ -72,7 +72,7 @@ public class FitGridView extends GridView {
     /**
      * use it to update view if you have changed width/height, grid size or adapter.
      */
-    private void updateAndMeasure() {
+    private void updateAdapter() {
         if (null == fitGridAdapter)
             return;
 
@@ -83,9 +83,9 @@ public class FitGridView extends GridView {
         setAdapter(fitGridAdapter);
     }
 
-      public void update() {
+    public void update() {
         remeasure(getMeasuredWidth(), getMeasuredHeight());
-        updateAndMeasure();
+        updateAdapter();
     }
 
     /**
@@ -95,7 +95,7 @@ public class FitGridView extends GridView {
     public void setDimension(float displayWidth, float displayHeight) {
         itemWidth = (int) displayWidth / column;
         itemHeight = (int) displayHeight / row;
-        updateAndMeasure();
+        updateAdapter();
     }
 
     private int itemWidth = 0, itemHeight = 0;
@@ -138,7 +138,7 @@ public class FitGridView extends GridView {
     private FitGridAdapter fitGridAdapter;
 
     /**
-     * @param fitGridAdapter sets adapter and measures available screen sizes to fit gridView in it.
+     * @param fitGridAdapter sets your adapter later in updateAdapter method.
      */
     public void setFitGridAdapter(FitGridAdapter fitGridAdapter) {
         this.fitGridAdapter = fitGridAdapter;
