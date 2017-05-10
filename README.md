@@ -24,7 +24,7 @@ and:
 
 ```gradle
 dependencies {
-    compile 'com.github.ceryle:fitgridview:v1.0.3'
+    compile 'com.github.ceryle:FitGridView:v1.0.4'
 }
 ```
 
