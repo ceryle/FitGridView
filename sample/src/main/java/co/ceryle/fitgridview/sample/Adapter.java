@@ -1,9 +1,11 @@
-package co.ceryle.fitgridview;
+package co.ceryle.fitgridview.sample;
 
 import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import co.ceryle.fitgridview.FitGridAdapter;
 
 class Adapter extends FitGridAdapter {
 

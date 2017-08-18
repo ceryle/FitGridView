@@ -1,4 +1,4 @@
-package co.ceryle.fitgridview;
+package co.ceryle.fitgridview.sample;
 
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
@@ -8,7 +8,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.GridView;
+
+import co.ceryle.fitgridview.FitGridView;
 
 public class MainActivity extends AppCompatActivity {
 
