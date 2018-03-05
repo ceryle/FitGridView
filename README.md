@@ -69,8 +69,8 @@ protected void onCreate(Bundle savedInstanceState) {
 }
         
 private void changeSize(int r, int c) {
-     gridView.setRow(r);
-     gridView.setColumn(c);
+     gridView.setNumRows(r);
+     gridView.setNumColumn(c);
      gridView.update();
 }
 ```
@@ -78,9 +78,8 @@ private void changeSize(int r, int c) {
 ###### in your adapter:
 ```java
 // In adapter, you can define your grid size by passing it to super method.
-int dataSize = 15;
 Adapter(Context context) {
-        super(context, R.layout.grid_item, dataSize);
+        super(context, R.layout.grid_item, 15);
         this.context = context;
 }
 ```
